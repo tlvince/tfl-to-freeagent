@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convert should handle a well-formed CSV 1`] = `
+"Foo,Travel,08/10/2018,GBP,Payment,6.80,TfL travel,,Auto,,,,,Fez Consulting Ltd,Business Strategy,,,,,
+"
+`;

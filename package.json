@@ -1,0 +1,48 @@
+{
+  "name": "tfl-to-freeagent",
+  "version": "1.0.0",
+  "description": "Convert a TfL CSV to FreeAgent",
+  "main": "dist/index.js",
+  "bin": "dist/cli.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && chmod +x dist/cli.js",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "test": "jest",
+    "test:smoke": "./dist/cli.js --claimant foo < test/fixtures/tfl.csv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlvince/tfl-to-freeagent.git"
+  },
+  "keywords": [
+    "freeagent"
+  ],
+  "author": "Tom Vincent <git@tlvince.com> (https://tlvince.com)",
+  "bugs": {
+    "url": "https://github.com/tlvince/tfl-to-freeagent/issues"
+  },
+  "homepage": "https://github.com/tlvince/tfl-to-freeagent#readme",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "neat-csv": "5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.6.4",
+    "@babel/plugin-transform-regenerator": "7.4.5",
+    "@babel/plugin-transform-runtime": "7.6.2",
+    "@babel/preset-env": "7.6.3",
+    "@babel/preset-typescript": "7.6.0",
+    "@babel/runtime": "7.6.3",
+    "@types/jest": "24.0.21",
+    "@types/node": "12.12.3",
+    "babel-jest": "24.9.0",
+    "eslint": "6.6.0",
+    "eslint-config-tlvince": "2.0.1",
+    "jest": "24.9.0",
+    "prettier": "1.18.2",
+    "typescript": "3.6.4"
+  }
+}

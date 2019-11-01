@@ -1,0 +1,42 @@
+name: Build and Publish
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install
+        uses: Borales/actions-yarn@1.1.0
+        with:
+          args: install
+
+      - name: Lint
+        uses: Borales/actions-yarn@1.1.0
+        with:
+          args: lint
+
+      - name: Test
+        uses: Borales/actions-yarn@1.1.0
+        with:
+          args: test
+
+      - name: Build
+        uses: Borales/actions-yarn@1.1.0
+        with:
+          args: build
+
+      - name: 'Test: smoke'
+        uses: Borales/actions-yarn@1.1.0
+        with:
+          args: 'test:smoke'
+
+      - name: Publish
+        uses: mikeal/merge-release@v4.0.7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
