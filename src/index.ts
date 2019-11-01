@@ -74,5 +74,5 @@ export const convert = async (csvLines: string, rawParams): Promise<string> => {
         })
         .join(',')
       return `${acc}${row}\n`
-    }, '')
+    }, `${freeAgentHeaders.join(',')}\n`)
 }
