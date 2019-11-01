@@ -1,4 +1,4 @@
-import { convert, Params } from '../src'
+import { convert } from '../src'
 import { promises as fsP } from 'fs'
 
 interface SetupResponse {
@@ -17,7 +17,7 @@ describe('convert', () => {
   it('should handle a well-formed CSV', async () => {
     const { csvFixture } = await setup()
     /* eslint-disable @typescript-eslint/camelcase */
-    const params: Params = {
+    const params = {
       claimant_name: 'Foo',
       project_client: 'Fez Consulting Ltd',
       project_name: 'Business Strategy',

@@ -1,6 +1,16 @@
 #!/usr/bin/env node
 
-import { convert, Params } from '.'
+import mri from 'mri'
+import { convert, freeAgentHeaders } from '.'
+
+const usage = (basename: string) => `usage: ${basename} [-h, --help, option...]
+
+Convert a TfL CSV to FreeAgent. Read from stdin, output to stdout.
+
+example: ${basename} --claimant_name "Foo" < /path/to/tfl.csv
+
+options:
+${freeAgentHeaders.map(header => `  --${header} <string>`).join('\n')}`
 
 let input = ''
 process.stdin.on('data', data => {
@@ -8,15 +18,18 @@ process.stdin.on('data', data => {
 })
 
 process.stdin.once('end', () => {
-  const [, basename, claimentParm, ...claimant] = process.argv
-
-  if (claimentParm !== '--claimant') {
-    console.error(`${basename} --claimant <name>`)
-    process.exit(1)
+  const [, basename, ...args] = process.argv
+  const opts = {
+    alias: {
+      h: 'help',
+    },
+    boolean: 'help',
   }
+  const { _, help, ...params } = mri(args, opts) // eslint-disable-line @typescript-eslint/no-unused-vars
 
-  const params: Params = {
-    claimant_name: claimant.join(' '), // eslint-disable-line @typescript-eslint/camelcase
+  if (help) {
+    console.error(usage(basename))
+    process.exit(0)
   }
 
   convert(input, params)

@@ -1,6 +1,6 @@
 import neatCsv, { Row } from 'neat-csv' // eslint-disable-line import/default
 
-const freeAgentHeaders = [
+export const freeAgentHeaders = [
   'claimant_name',
   'category',
   'DD/MM/YYYY',
@@ -44,17 +44,6 @@ const transform = (row: Row) => ({
   'Daily Charge (GBP)': inverseAmount(row['Daily Charge (GBP)']),
 })
 
-export interface Params {
-  claimant_name: string
-  category?: string
-  currency?: string
-  type?: string
-  description?: string
-  sales_tax_rate?: string
-  project_client?: string
-  project_name?: string
-}
-
 const defaultParams = {
   category: 'Travel',
   currency: 'GBP',
@@ -63,12 +52,8 @@ const defaultParams = {
   sales_tax_rate: 'Auto', // eslint-disable-line @typescript-eslint/camelcase
 }
 
-export const convert = async (
-  csvLines: string,
-  rawParams: Params
-): Promise<string> => {
+export const convert = async (csvLines: string, rawParams): Promise<string> => {
   const params = { ...defaultParams, ...rawParams }
-
   const rows = await neatCsv(csvLines)
   return rows
     .filter(isValid)
