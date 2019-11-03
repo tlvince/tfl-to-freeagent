@@ -1,5 +1,7 @@
 import neatCsv, { Row } from 'neat-csv' // eslint-disable-line import/default
 
+var a_b = 'a'
+
 export const freeAgentHeaders = [
   'claimant_name',
   'category',

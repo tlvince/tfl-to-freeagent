@@ -7,3 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: stefanoeb/eslint-action@1.0.0
+        args: '--ext ts src'
