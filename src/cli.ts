@@ -10,7 +10,21 @@ Convert a TfL CSV to FreeAgent. Read from stdin, output to stdout.
 example: ${basename} --claimant_name "Foo" < /path/to/tfl.csv
 
 options:
-${freeAgentHeaders.map(header => `  --${header} <string>`).join('\n')}`
+  ${freeAgentHeaders.map(header => `  --${header} <string>`).join('\n')}`
+
+const [, basename, ...args] = process.argv
+const opts = {
+  alias: {
+    h: 'help',
+  },
+  boolean: 'help',
+}
+const { _, help, ...params } = mri(args, opts) // eslint-disable-line @typescript-eslint/no-unused-vars
+
+if (help) {
+  console.error(usage(basename))
+  process.exit(0)
+}
 
 let input = ''
 process.stdin.on('data', data => {
@@ -18,20 +32,6 @@ process.stdin.on('data', data => {
 })
 
 process.stdin.once('end', () => {
-  const [, basename, ...args] = process.argv
-  const opts = {
-    alias: {
-      h: 'help',
-    },
-    boolean: 'help',
-  }
-  const { _, help, ...params } = mri(args, opts) // eslint-disable-line @typescript-eslint/no-unused-vars
-
-  if (help) {
-    console.error(usage(basename))
-    process.exit(0)
-  }
-
   convert(input, params)
     .then(res => process.stdout.write(res))
     .catch(error => {
