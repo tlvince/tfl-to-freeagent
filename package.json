@@ -1,6 +1,6 @@
 {
   "name": "tfl-to-freeagent",
-  "version": "1.0.0",
+  "version": "1.0.27",
   "description": "Convert a TfL CSV to FreeAgent",
   "main": "dist/index.js",
   "bin": "dist/cli.js",
