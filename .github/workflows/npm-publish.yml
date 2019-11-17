@@ -30,8 +30,9 @@ jobs:
         id: semantic
         with:
           branch: master
+          semantic_version: '^15'
           extra_plugins: |
-            @semantic-release/git
+            '@semantic-release/git@^7'
         env:
           NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -52,9 +53,3 @@ jobs:
           git checkout package.json
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Push updates to branch for major version
-        if: steps.semantic.outputs.new_release_published == 'true'
-        run: 'git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD:refs/heads/v${{steps.semantic.outputs.new_release_major_version}}'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
