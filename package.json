@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && chmod +x dist/cli.js",
-    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "lint": "yarn eslint && yarn prettier --check",
+    "lint:fix": "yarn eslint --fix && yarn prettier --write",
+    "eslint": "eslint '**/*.{js,jsx,ts,tsx,json}'",
+    "prettier": "prettier '**/*.{js,jsx,ts,tsx,json,css,md}'",
     "test": "jest",
     "test:smoke": "./dist/cli.js --claimant_name foo < test/fixtures/tfl.csv"
   },
