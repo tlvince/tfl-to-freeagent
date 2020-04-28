@@ -60,7 +60,7 @@ export const convert = async (csvLines: string, rawParams): Promise<string> => {
     .map(transform)
     .reduce((acc, parsedRow: Row) => {
       const row = freeAgentHeaders
-        .map(header => {
+        .map((header) => {
           if (params[header]) {
             return params[header]
           }
