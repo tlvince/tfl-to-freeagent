@@ -51,7 +51,7 @@
     "babel-jest": "26.0.1",
     "commitlint": "8.3.5",
     "eslint": "7.0.0",
-    "eslint-config-tlvince": "2.1.14",
+    "eslint-config-tlvince": "2.1.16",
     "husky": "4.2.5",
     "jest": "26.0.1",
     "lint-staged": "10.2.4",
