@@ -53,7 +53,7 @@
     "eslint": "7.3.1",
     "eslint-config-tlvince": "2.1.18",
     "husky": "4.2.5",
-    "jest": "26.0.1",
+    "jest": "26.1.0",
     "lint-staged": "10.2.11",
     "prettier": "1.19.1",
     "typescript": "3.9.5"
