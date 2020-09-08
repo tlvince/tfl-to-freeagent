@@ -52,7 +52,7 @@
     "commitlint": "9.1.2",
     "eslint": "7.8.1",
     "eslint-config-tlvince": "2.1.18",
-    "husky": "4.2.5",
+    "husky": "4.3.0",
     "jest": "26.4.2",
     "lint-staged": "10.3.0",
     "prettier": "1.19.1",
