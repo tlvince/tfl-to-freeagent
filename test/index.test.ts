@@ -1,5 +1,6 @@
-import { convert } from '../src'
 import { promises as fsP } from 'fs'
+
+import { convert } from '../src'
 
 interface SetupResponse {
   csvFixture: string
@@ -16,13 +17,11 @@ const setup = async (): Promise<SetupResponse> => {
 describe('convert', () => {
   it('should handle a well-formed CSV', async () => {
     const { csvFixture } = await setup()
-    /* eslint-disable @typescript-eslint/camelcase */
     const params = {
       claimant_name: 'Foo',
       project_client: 'Fez Consulting Ltd',
       project_name: 'Business Strategy',
     }
-    /* eslint-enable @typescript-eslint/camelcase */
     const converted = await convert(csvFixture, params)
     expect(converted).toMatchSnapshot()
   })

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import mri from 'mri'
+
 import { convert, freeAgentHeaders } from '.'
 
 const usage = (basename: string) => `usage: ${basename} [-h, --help, option...]

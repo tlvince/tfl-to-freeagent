@@ -27,7 +27,7 @@ const tflHeaders = ['Date', 'Daily Charge (GBP)']
 
 const freeAgentToTfl = {
   'DD/MM/YYYY': 'Date',
-  gross_value: 'Daily Charge (GBP)', // eslint-disable-line @typescript-eslint/camelcase
+  gross_value: 'Daily Charge (GBP)',
 }
 
 const isValid = (row: Row): boolean =>
@@ -49,10 +49,13 @@ const defaultParams = {
   currency: 'GBP',
   type: 'Payment',
   description: 'TfL travel',
-  sales_tax_rate: 'Auto', // eslint-disable-line @typescript-eslint/camelcase
+  sales_tax_rate: 'Auto',
 }
 
-export const convert = async (csvLines: string, rawParams): Promise<string> => {
+export const convert = async (
+  csvLines: string,
+  rawParams: Record<string, unknown>
+): Promise<string> => {
   const params = { ...defaultParams, ...rawParams }
   const rows = await neatCsv(csvLines)
   return rows
