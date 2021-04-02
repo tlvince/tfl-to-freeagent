@@ -49,7 +49,7 @@
     "@types/jest": "26.0.22",
     "@types/node": "14.14.37",
     "babel-jest": "26.6.3",
-    "commitlint": "12.0.1",
+    "commitlint": "12.1.1",
     "eslint": "7.23.0",
     "eslint-config-tlvince": "2.2.27",
     "husky": "6.0.0",
