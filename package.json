@@ -47,7 +47,7 @@
     "@babel/runtime": "7.14.6",
     "@commitlint/config-conventional": "12.1.4",
     "@types/jest": "26.0.23",
-    "@types/node": "15.12.4",
+    "@types/node": "15.12.5",
     "babel-jest": "27.0.5",
     "commitlint": "12.1.4",
     "eslint": "7.29.0",
